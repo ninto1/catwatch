@@ -5,13 +5,13 @@ import argparse
 import time
 
 def get_current_livestream(channel_url):
-        response = requests.get(channel_url)
+    response = requests.get(channel_url)
 
-        if response.status_code != 200:
+    if response.status_code != 200:
         print(f"Error: Unable to fetch channel page. Status code: {response.status_code}")
         return None
 
-            match = re.search(r'liveData".*watch\?v=(\w+)', response.text)
+    match = re.search(r'liveData".*watch\?v=(\w+)', response.text)
 
     if match:
         video_id = match.group(1)
@@ -23,11 +23,12 @@ def get_current_livestream(channel_url):
 
 def play_stream(livestream_url):
     try:
-                subprocess.run([
+        subprocess.run([
             'mpv', 
             '--cache=yes', 
             '--cache-secs=60', 
-            '--ytdl-format=bestvideo+bestaudio/best',              '--no-audio', 
+            '--ytdl-format=bestvideo+bestaudio/best', 
+            '--no-audio', 
             livestream_url
         ])
     except Exception as e:
@@ -49,10 +50,10 @@ def monitor_stream(channel_name):
         else:
             print("No livestream currently active. Retrying...")
         
-                time.sleep(30)
+        time.sleep(30)
 
 if __name__ == "__main__":
-        parser = argparse.ArgumentParser(description="YouTube Livestream Monitor")
+    parser = argparse.ArgumentParser(description="YouTube Livestream Monitor")
     parser.add_argument(
         'channel_name', 
         nargs='?', 
