@@ -1,5 +1,7 @@
 # catwatch
-Simple livestream monitor originally made for watching a cat
+Simple livestream monitor originally made for watching a cat  
+
+[![Made with - Cat](https://img.shields.io/badge/Made_with-Cat-05c2fc)](https://www.youtube.com/@gletu)
 
 ## Prerequisites:
 - MPV
